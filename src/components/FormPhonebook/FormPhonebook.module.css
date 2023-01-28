@@ -1,0 +1,24 @@
+.formPhone {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.formLabel {
+    display: flex;
+    flex-direction: column;
+}
+
+.formInput {
+    width: 250px;
+    height: 25px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.formBtn {
+    display: inline-block;
+    width: 180px;
+    padding: 5px 20px;
+}
