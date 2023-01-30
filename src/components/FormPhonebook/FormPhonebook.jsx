@@ -8,8 +8,6 @@ import * as Yup from 'yup';
 
 class FormPhonebook extends Component {
     handleSubmit = (values, { resetForm }) => {
-        console.log(values);
-
         this.props.onSubmit(values);
         resetForm();
     };
@@ -19,11 +17,12 @@ class FormPhonebook extends Component {
             .min(2, 'Too Short!')
             .max(16, 'Too Long!')
             .required('Name is required field'),
+
         number: Yup.number()
             .typeError('That does not look like a phone number')
             .positive("A phone number can't start with a minus")
             .integer("A phone number can't include a decimal point")
-            .min(8)
+            .min(10)
             .required('A phone number is required'),
     });
 
@@ -46,8 +45,13 @@ class FormPhonebook extends Component {
                             className={css.formInput}
                             type="text"
                             name="name"
+                            placeholder="Name"
                         />
-                        <ErrorMessage name="name" component="div" />
+                        <ErrorMessage
+                            className={css.error}
+                            name="name"
+                            component="div"
+                        />
                     </label>
                     <label className={css.formLabel}>
                         Number
@@ -55,8 +59,14 @@ class FormPhonebook extends Component {
                             className={css.formInput}
                             type="tel"
                             name="number"
+                            pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
+                            placeholder="123 456 78 90"
                         />
-                        <ErrorMessage name="number" component="div" />
+                        <ErrorMessage
+                            className={css.error}
+                            name="number"
+                            component="div"
+                        />
                     </label>
                     <button className={css.formBtn} type="submit">
                         Add contact
